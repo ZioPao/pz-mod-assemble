@@ -1,0 +1,42 @@
+const core = require('@actions/core');
+const github = require('@actions/github');
+
+const fs = require('fs');
+const path = require('path');
+
+// Contents/mods/MODNAME
+const modName = core.getInput('modName')
+const workshopModFullDir = path.join("Contents", "mods", modName);
+fs.mkdirSync(workshopModFullDir, { recursive: true });
+
+
+// Various locations
+const mediaFolder = path.join("media");
+fs.cpSync(mediaFolder, path.join(workshopModFullDir, "media"), { recursive: true });
+
+// Root files
+const rootFilesToCopy = ["workshop.txt", "preview.png"];
+for (const file of rootFilesToCopy) {
+    try {
+        const sourcePath = path.join("workshop_files", file);
+        fs.copyFileSync(sourcePath, path.join(workshopModRootDir, file));
+    } catch (error) {
+        console.log("Error copying " + file);
+    }
+}
+
+////////////
+
+const modFilesToCopy = ["mod.info", "poster.png", "icon.png"];
+for (const file of modFilesToCopy) {
+    try {
+        const sourcePath = path.join(file);
+        fs.copyFileSync(sourcePath, path.join(workshopModFullDir, file));
+    } catch (error) {
+        console.log("Error copying " + file);
+    }
+}
+
+// TODO: change mod.info with additional_text
+
+console.log("All done!");
