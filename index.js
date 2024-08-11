@@ -5,8 +5,13 @@ const fs = require('fs');
 const path = require('path');
 
 // Contents/mods/MODNAME
+
+
+const workshopModRoot = path.join("Contents")
+const workshopModFullDir = path.join(workshopModRoot, "mods", modName);
+
+
 const modName = core.getInput('modName')
-const workshopModFullDir = path.join("Contents", "mods", modName);
 fs.mkdirSync(workshopModFullDir, { recursive: true });
 
 
@@ -19,7 +24,7 @@ const rootFilesToCopy = ["workshop.txt", "preview.png"];
 for (const file of rootFilesToCopy) {
     try {
         const sourcePath = path.join("workshop_files", file);
-        fs.copyFileSync(sourcePath, path.join(workshopModRootDir, file));
+        fs.copyFileSync(sourcePath, path.join(workshopModRoot, file));
     } catch (error) {
         console.log("Error copying " + file);
         console.log("Error", error.message);
@@ -32,7 +37,7 @@ const modFilesToCopy = ["mod.info", "poster.png", "icon.png"];
 for (const file of modFilesToCopy) {
     try {
         const sourcePath = path.join(file);
-        fs.copyFileSync(sourcePath, path.join(workshopModFullDir, file));
+        fs.copyFileSync(sourcePath, path.join(workshopModRoot, file));
     } catch (error) {
         console.log("Error copying " + file);
         console.log("Error", error.message);
