@@ -31085,13 +31085,13 @@ const fs = __nccwpck_require__(7147);
 const path = __nccwpck_require__(1017);
 
 // Contents/mods/MODNAME
+const modName = core.getInput('modName')
 
 
 const workshopModRoot = path.join("Contents")
 const workshopModFullDir = path.join(workshopModRoot, "mods", modName);
 
 
-const modName = core.getInput('modName')
 fs.mkdirSync(workshopModFullDir, { recursive: true });
 
 

@@ -5,13 +5,13 @@ const fs = require('fs');
 const path = require('path');
 
 // Contents/mods/MODNAME
+const modName = core.getInput('modName')
 
 
 const workshopModRoot = path.join("Contents")
 const workshopModFullDir = path.join(workshopModRoot, "mods", modName);
 
 
-const modName = core.getInput('modName')
 fs.mkdirSync(workshopModFullDir, { recursive: true });
 
 
