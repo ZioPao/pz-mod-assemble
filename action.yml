@@ -1,0 +1,5 @@
+name: 'PZ Mod Assembler'
+description: 'Assemble a mod to the format that Zomboid accepts'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
