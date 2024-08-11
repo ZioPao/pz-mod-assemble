@@ -22,6 +22,7 @@ for (const file of rootFilesToCopy) {
         fs.copyFileSync(sourcePath, path.join(workshopModRootDir, file));
     } catch (error) {
         console.log("Error copying " + file);
+        console.log("Error", error.message);
     }
 }
 
@@ -34,6 +35,7 @@ for (const file of modFilesToCopy) {
         fs.copyFileSync(sourcePath, path.join(workshopModFullDir, file));
     } catch (error) {
         console.log("Error copying " + file);
+        console.log("Error", error.message);
     }
 }
 
